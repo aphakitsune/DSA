@@ -37,6 +37,25 @@ ElementType Retrieve(Position p, List L){
 		return p -> next ->element;
 }
 
+
+Position EndList(List L){
+	Position p;
+	p = First(L);
+	while(p -> next != NULL)
+		p = p -> next;
+	return p;
+}
+
+
+void InsertList(ElementType x, Position p, List *L){
+	Position t;
+	t = (NodeType) malloc (sizeof(struct Node));
+	t -> element = x;
+	t -> next = p -> next;
+	p -> next = t;
+}
+
+
 void WriteList(List *L){
 	int i,N;
 	ElementType x;
@@ -48,25 +67,11 @@ void WriteList(List *L){
 	}
 }
 
-Position EndList(List L){
-	Position p;
-	p = First(L);
-	while(p -> next != NULL)
-		p = p -> next;
-	return p;
-}
 
 int Next(Position p, List L){
 	return p -> next;
 }
 
-void InsertList(ElementType x, Position p, List *L){
-	Position t;
-	t = (NodeType) malloc (sizeof(struct Node));
-	t -> element = x;
-	t -> next = p -> next;
-	p -> next = t;
-}
 
 void PrintList(List L){
 	Position p;
@@ -77,6 +82,7 @@ void PrintList(List L){
 	 }
 	 printf("\n");
 }
+
 
 void Sort(List *L){
 	Position p,q, smallest;
